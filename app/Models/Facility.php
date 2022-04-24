@@ -10,6 +10,6 @@ class Facility extends Model
     protected $fillable =['name'];
 
     public function properties(){
-        return $this->belongsToMany('App\Models\Property','property_facilities','property_id','facility_id');
+        return $this->belongsToMany('App\Models\Property','property_facilities','facility_id','property_id');
     }
 }

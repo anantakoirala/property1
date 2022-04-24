@@ -7,7 +7,9 @@
 <section class="content-header">
 	
 	<h1>Property<small>List</small></h1>
-	<a href="{{route('property.create')}}" class="btn btn-success">Add Property</a>
+	<a href="{{route('addHouse')}}" class="btn btn-success">Add House</a>
+	<a href="{{route('addLand')}}" class="btn btn-success">Add Land</a>
+	<a href="{{route('addApartment')}}" class="btn btn-success">Add Apartment</a>
 	<ol class="breadcrumb">
 		<li><a href=""><i class="fa fa-dashboard"></i>Dashboard</a></li>
 		<li><a href="">Property</a></li>
@@ -35,7 +37,9 @@
 							<tr>
 								<th>S.N.</th>
 								<th>Name</th>
+								<th>Image</th>
 								<th>Purpose</th>
+								<th>Type</th>
                 <th>Action</th>
 							</tr>
 						</thead>
@@ -45,16 +49,24 @@
             <tr>
               <td>{{$i}}</td>
             	<td>{{$detail->name}}</td>
+            	<td>
+            		@if($detail->feature_image)
+            		<img src="{{asset('images/property/thumbnail/'.$detail->feature_image)}}" width="100" height="100">
+            		@else
+            		<p>N/A</p>
+            		@endif
+            	</td>
             	<td>{{$detail->purpose->name}}</td>
+            	<td>{{$detail->propertycategory}}</td>
 				      <td>
 		            	<a class="btn btn-info edit" href="{{route('property.edit',$detail->id)}}" title="Edit">Edit</a>
-		            	@if($detail->main!=1 && $detail->home==1)
+		            	
 		            	<form method= "post" action="{{route('property.destroy',$detail->id)}}" class="delete">
             				{{csrf_field()}}
             				<input type="hidden" name="_method" value="DELETE">
            					<button type="submit" class="btn  btn-danger btn-delete" style="display:inline">Delete</button>
            				    </form>
-           				@endif
+           				
 		            	
 		            </td>
 				      </tr>

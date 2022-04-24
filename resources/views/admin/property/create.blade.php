@@ -64,14 +64,6 @@
 						<select class="form-control" name="propertytype_id" id="property_type"></select>
 					</div>
 					
-					<div class="form-group">
-							<label>Select Facilities</label>
-							<select multiple="multiple" class="js-example-basic-multiple form-control" name="facilities[]">
-								@foreach($facilities as $facility)
-								<option value="{{$facility->id}}">{{$facility->name}}</option>
-								@endforeach
-							</select>
-						</div>
 					
 					<!-- <div class="form-group">
 						<label>Title</label>
@@ -85,86 +77,9 @@
 					</div> -->
 				</div>
 			</div>
-			<div class="box box-primary">
-				<div class="box-header with-heading">
-					<h3 class="box-title"><b>Basic Details</b></h3>
-				</div>
-				<div class="box-body">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>name(required)</label>
-							<input type="text" name="name" class="form-control" value="{{old('name')}}">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group property_type hidden">
-							<label>Property Types	</label>
-							<select class="form-control" name="propertytype_id" id="property_type"></select>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Class Types</label>
-							<select class="form-control property_category" name="propertycategory_id">
-								<option disabled selected="true">Select Category</option>
-								@foreach($class_types as $class_type)
-								<option value="{{$class_type->id}}" >{{$class_type->name}}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-					
-					
-					
-					
-					
-				</div>
-			</div>
-			<div class="box box-primary">
-				<div class="box-header with-heading">
-					<h3 class="box-title"><b>Advertisement & Types</b></h3>
-				</div>
-				<div class="box-body">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Advertisement Types</label>
-							<select class="form-control property_category" name="propertycategory_id">
-								<option disabled selected="true">Select Advertisement Types</option>
-								@foreach($advertisement_types as $ad_type)
-								<option value="{{$ad_type->id}}" >{{$ad_type->name}}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Commision Type</label>
-							<select class="form-control property_category" name="propertycategory_id">
-								<option disabled selected="true">Select Commission Type</option>
-								@foreach($commission_types as $com_type)
-								<option value="{{$com_type->id}}" >{{$com_type->name}}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Class Types</label>
-							<select class="form-control property_category" name="propertycategory_id">
-								<option disabled selected="true">Select Category</option>
-								@foreach($class_types as $class_type)
-								<option value="{{$class_type->id}}" >{{$class_type->name}}</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-					
-					
-					
-					
-					
-				</div>
-			</div>
+			<div class="basicDetails"></div>
+			<div class="advertisement_and_types"></div>
+			<div class="document_and_details"></div>
 			<div class="box box-primary">
 				<div class="box-header with-heading">
 					<h3 class="box-title">Address</h3>
@@ -295,10 +210,14 @@
 	          data:{id:property_categoryid},
 	          success:function(data){
 	          	if(data){
+	          		console.log(data.property_types);
+	          		$(".basicDetails").append(data.basicDetails);
+	          		$('.advertisement_and_types').append(data.advertisement_and_types);
+	          		$('.document_and_details').append(data.document_and_details);
 	          		$('.property_type').removeClass('hidden');
 	          		$('#property_type').empty();
 	          		$('#property_type').append('<option hidden>Choose Property Types</option>');
-	          		$.each(data,function(key,ptype){
+	          		$.each(data.property_types,function(key,ptype){
 	          			 $('select[name="propertytype_id"]').append('<option value="'+ key +'">' + ptype.name+ '</option>');
 	          		});
 	          	}

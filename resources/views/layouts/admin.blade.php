@@ -151,8 +151,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              
-              
+              <li class=""><a href="{{route('addHouse')}}"><i class="fa fa-circle-o text-yellow"></i> Add House</a></li>
+              <li class=""><a href="{{route('addApartment')}}"><i class="fa fa-circle-o text-yellow"></i> Add Apartment</a></li>
+              <li class=""><a href="{{route('addLand')}}"><i class="fa fa-circle-o text-yellow"></i> Add Land</a></li>
               <li class=""><a href="{{route('property.index')}}"><i class="fa fa-circle-o text-yellow"></i> All Properties</a></li>
               <li class=""><a href="{{route('property-type.index')}}"><i class="fa fa-circle-o text-yellow"></i> All Property Types</a></li>
               <li class=""><a href="{{route('class-type.index')}}"><i class="fa fa-circle-o text-yellow"></i> All Class Types</a></li>
@@ -182,6 +183,20 @@
               <li class=""><a href="{{route('facility.index')}}"><i class="fa fa-circle-o text-yellow"></i> All Facilities</a></li>
               <li class=""><a href="{{route('nearby-facility.index')}}"><i class="fa fa-circle-o text-yellow"></i> All Near By Facilities</a></li>
               
+            </ul>
+          </li>
+          <li class="treeview ">
+            <a href="#">
+             <i class="fa fa-gift"></i> <span>Condition</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              
+              
+              <li class=""><a href="{{route('exterior-look.index')}}"><i class="fa fa-circle-o text-yellow"></i> Exterior Look</a></li>
+              <li class=""><a href="{{route('interior-look.index')}}"><i class="fa fa-circle-o text-yellow"></i> Interior Look</a></li>
             </ul>
           </li>
           

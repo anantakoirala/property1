@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['namespace'=>'Api','middleware'=>['cors']],function(){
+    Route::post('register','ApiController@register');
+    Route::get('home','ApiController@home');
+    Route::get('rent','ApiController@propertyOnRent');
+    Route::get('sale','ApiController@propertyOnSale');
+    Route::get('invest','ApiController@invest');
+    Route::get('property-detail/{id}','ApiController@propertyDetail');
+});
