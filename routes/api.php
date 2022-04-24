@@ -24,5 +24,5 @@ Route::group(['namespace'=>'Api','middleware'=>['cors']],function(){
     Route::get('rent','ApiController@propertyOnRent');
     Route::get('sale','ApiController@propertyOnSale');
     Route::get('invest','ApiController@invest');
-    Route::get('property-detail/{id}','ApiController@propertyDetail');
+    // Route::get('property-detail/{id}','ApiController@propertyDetail');
 });
